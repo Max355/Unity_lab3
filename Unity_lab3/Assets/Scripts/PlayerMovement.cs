@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float movementSpeed = 5f;
     [SerializeField] float jumpHeight = 5f;
-    CapsuleCollider2D capsuleCollider;
+    BoxCollider2D boxCollider;
     Rigidbody2D rbody;
     Animator myAnimator;
     private bool canDash = true;
@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
-        capsuleCollider = GetComponent<CapsuleCollider2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         myAnimator = GetComponent<Animator>();
     }
 
@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
         {
            return;
         } 
-        if (!capsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if (!boxCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
            return;
         }
